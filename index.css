@@ -4,6 +4,7 @@
         url("/fonts/LexendDeca-Regular.woff2") format("woff2"),
         url("/fonts/LexendDeca-Regular.woff") format("woff"),
         url("/fonts/LexendDeca-VariableFont_wght.ttf") format("truetype");
+    font-display: swap;
 }
 
 /* weight:400 */
@@ -14,6 +15,7 @@
         url("/fonts/BigShouldersDisplay-Thin.woff2") format("woff2"),
         url("/fonts/BigShouldersDisplay-Thin.woff") format("woff"),
         url("/fonts/BigShouldersDisplay-VariableFont_wght.ttf") format("truetype");
+    font-display: swap;
 }
 
 /* weight:700 */
@@ -25,12 +27,10 @@
 
 body {
     font-size: 15px;
-    background-color: #333;
-    width: 100vw;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
 }
 
 :root {
@@ -39,8 +39,8 @@ body {
     --very-dark-cyan: hsl(179deg 100% 13%);
     --paragraphs: hsl(0% 0% 100% / 75%);
     --background-headings-buttons: hsl(0deg 0% 95%);
-    --lexend-font: lexend-deca;
-    --big-font: big-shoulders-display;
+    --font-400: lexend-deca;
+    --font-700: big-shoulders-display;
 }
 
 .card-container {
@@ -48,49 +48,45 @@ body {
     flex-flow: row nowrap;
     overflow: hidden;
     border-radius: 10px;
-    margin: 0 25px;
+    max-width: 925px;
 }
 
 .card {
     box-sizing: border-box;
-    max-width: 350px;
+    max-width: 330px;
     display: flex;
     flex-flow: column nowrap;
-    padding: 25px;
+    padding: 3em;
     gap: 25px;
     justify-content: space-between;
 }
 
 .title {
     text-transform: uppercase;
-    font-family: var(--big-font), sans-serif;
-    font-weight: 700;
+    font-family: var(--font-700), sans-serif;
     color: var(--background-headings-buttons);
-    font-size: 2em;
+    font-size: 4em;
 }
 
 .description {
-    font-family: var(--lexend-font);
-    font-size: 0.8em;
-    font-weight: 400;
-    margin-bottom: 25px;
-    color: var(--background-headings-buttons);
-}
-
-.text-mayus {
-    text-transform: uppercase;
+    line-height: 1.5em;
+    font-family: var(--font-400), sans-serif;
+    font-size: 1em;
+    opacity: 0.75;
+    color: #fff;
+    margin-bottom: 4em;
 }
 
 .button {
     background-color: var(--background-headings-buttons);
     border: 1px solid white;
-    border-radius: 20px;
-    height: 40px;
-    width: 100px;
-    font-family: var(--lexend-font);
-    font-weight: 400;
-    font-size: 0.8em;
+    border-radius: 25px;
+    height: 50px;
+    width: 150px;
+    font-family: var(--font-400);
+    font-size: 1em;
     cursor: pointer;
+    text-transform: capitalize;
 }
 
 .card:first-child {
@@ -132,14 +128,21 @@ body {
     background-color: var(--very-dark-cyan);
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 767px) {
     body {
-        height: auto;
-        margin-top: 25px;
+        margin: 25px;
+    }
+
+    .card {
+        padding: 3.333em;
+    }
+
+    .description {
+        margin-bottom: 0;
+        font-size: 1em;
     }
 
     .card-container {
         flex-flow: column nowrap;
-        margin: 0;
     }
 }
